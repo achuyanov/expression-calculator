@@ -44,7 +44,7 @@ function calc(str) {
     let [res, val1, op , val2] = strObj;
     let x = Number(val1);
     let y = Number(val2);
-    if ((op == '/') && (y == 0)) { throw new Error('TypeError: Devision by zero.');}
+    if ((op == '/') && (y == 0)) { throw new Error('TypeError: Division by zero.');}
     let ret = (op=='*') ? (x*y) : (op=='/') ? (x/y) : (op=='+') ? (x+y) : (op=='-') ? (x-y) : null;
     return ret;//.toFixed(20);
 }
