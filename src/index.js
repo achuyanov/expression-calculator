@@ -40,13 +40,13 @@ function expressionCalculator(expr) {
 function calc(str) {
     let strRegEx = /(-?[0-9.]+)([\/*+-])(-?[0-9.]+)/;
     let  strObj = str.match(strRegEx);
-   // console.log(strObj);
+    //console.log(strObj);
     let [res, val1, op , val2] = strObj;
     let x = Number(val1);
     let y = Number(val2);
     if ((op == '/') && (y == 0)) { throw new Error('TypeError: Division by zero.');}
     let ret = (op=='*') ? (x*y) : (op=='/') ? (x/y) : (op=='+') ? (x+y) : (op=='-') ? (x-y) : null;
-    return ret;//.toFixed(20);
+    return ret.toFixed(20);
 }
 
 
@@ -56,5 +56,13 @@ module.exports = {
 
 
 //let a = " 58 * 85 * (  1 + 16 * 7 + (  82 * 31 * (  85 / 75 - 51 - 22  ) + 2 - 24  )  ) * 22 * (  27 + 67 + 0 + 93  ) ";
+//const a = " 24 - 23 * 17 / (  93 + 52 * 70 * (  6 + 91 / (  (  4 / 39 / 8 * 30  ) / (  22 * 97 * (  32 * 20 * (  82 - 80 * 51 / 89 * 9  ) * 56 + 82  ) * 89  ) - 17 - 17  ) / 29 / 81  )  ) ";
+
 //let b = expressionCalculator(a);      
 //console.log(b);
+
+//it("Nested brackets test 20", function() {
+ // const expr = " 24 - 23 * 17 / (  93 + 52 * 70 * (  6 + 91 / (  (  4 / 39 / 8 * 30  ) / (  22 * 97 * (  32 * 20 * (  82 - 80 * 51 / 89 * 9  ) * 56 + 82  ) * 89  ) - 17 - 17  ) / 29 / 81  )  ) ";
+ // const result = 23.9822;
+ // expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+//});
