@@ -5,17 +5,17 @@ function eval() {
 
 function expressionCalculator(expr) {
 
-    let multRegEx = /(?<!\d)-?[0-9.]+[\/*]-?[0-9.]+/;
-    let sumRegEx = /(?<!\d)-?[0-9.]+[-+]-?[0-9.]+/;
-    let brRegExp = /\(([0-9.\/*+-]+)\)/;
+    const multRegEx = /(?<!\d)-?[0-9.]+[\/*]-?[0-9.]+/;
+    const sumRegEx = /(?<!\d)-?[0-9.]+[-+]-?[0-9.]+/;
+    const brRegExp = /\(([0-9.\/*+-]+)\)/;
   
-    let ex = expr.replace(/\s/g, '');
-    let brExpr = ex.match(brRegExp);
+    const ex = expr.replace(/\s/g, '');
+    const brExpr = ex.match(brRegExp);
 
-    let leftBr = ex.match(/\(/g) && ex.match(/\(/g).length;
-    let rightBr = ex.match(/\)/g) && ex.match(/\)/g).length;
+    const leftBr = ex.match(/\(/g) && ex.match(/\(/g).length;
+    const rightBr = ex.match(/\)/g) && ex.match(/\)/g).length;
     
-    if (leftBr !== rightBr) { 
+    if (leftBr != rightBr) { 
       throw new Error('ExpressionError: Brackets must be paired');
     } else if (brExpr) {
       const res = ex.replace(brRegExp, (match, expression) => expressionCalculator(expression));
@@ -38,14 +38,14 @@ function expressionCalculator(expr) {
 
 
 function calc(str) {
-    let strRegEx = /(-?[0-9.]+)([\/*+-])(-?[0-9.]+)/;
-    let  strObj = str.match(strRegEx);
+    const strRegEx = /(-?[0-9.]+)([\/*+-])(-?[0-9.]+)/;
+    const  strObj = str.match(strRegEx);
     //console.log(strObj);
-    let [res, val1, op , val2] = strObj;
-    let x = Number(val1);
-    let y = Number(val2);
-    if ((op == '/') && (y == 0)) { throw new Error('TypeError: Division by zero.');}
-    let ret = (op=='*') ? (x*y) : (op=='/') ? (x/y) : (op=='+') ? (x+y) : (op=='-') ? (x-y) : null;
+    const [res, val1, op , val2] = strObj;
+    const x = Number(val1);
+    const y = Number(val2);
+    if ((op === '/') && (y === 0)) { throw new Error('TypeError: Division by zero.');}
+    const ret = (op==='*') ? (x*y) : (op=='/') ? (x/y) : (op==='+') ? (x+y) : (op==='-') ? (x-y) : null;
     return ret.toFixed(20);
 }
 
